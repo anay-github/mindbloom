@@ -1,0 +1,420 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-bloom: var(--bloom);
+  --color-bloom-foreground: var(--bloom-foreground);
+  --color-sky: var(--sky);
+  --color-sky-foreground: var(--sky-foreground);
+  --color-leaf: var(--leaf);
+  --color-leaf-foreground: var(--leaf-foreground);
+  --color-coral: var(--coral);
+  --color-sun: var(--sun);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Base — soft sage/mint backdrop sampled from illustration hills */
+  --background: oklch(0.93 0.018 165); /* ~#E2ECE9 sage */
+  --foreground: oklch(0.28 0 0);
+  --ink: oklch(0.22 0 0);
+  --surface: oklch(0.98 0 0);
+  --surface-2: oklch(0.95 0 0);
+
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.28 0 0);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.28 0 0);
+
+  /* Brand */
+  --primary: oklch(0.55 0.13 200); /* calm teal-blue */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.28 0 0);
+
+  --bloom: oklch(0.66 0.17 305); /* bloom purple */
+  --bloom-foreground: oklch(0.99 0 0);
+  --sky: oklch(0.72 0.12 230); /* calm blue */
+  --sky-foreground: oklch(0.99 0 0);
+  --leaf: oklch(0.78 0.13 165); /* soft green */
+  --leaf-foreground: oklch(0.22 0.04 175);
+  --coral: oklch(0.76 0.13 30);
+  --sun: oklch(0.86 0.15 90);
+
+  --muted: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.3 0 0);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --ring: oklch(0.66 0.17 305);
+}
+* {
+  transition: all 0.5s;
+}
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+  section,
+  [id] {
+    scroll-margin-top: 96px;
+  }
+  html,
+  body {
+    font-family: var(--font-sans);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--bloom) 14%, transparent), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, color-mix(in oklab, var(--leaf) 18%, transparent), transparent 60%),
+      radial-gradient(800px 500px at 50% 110%, color-mix(in oklab, var(--sky) 14%, transparent), transparent 60%);
+    background-attachment: fixed;
+  }
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.6) inset,
+    0 20px 50px -20px rgba(20, 20, 30, 0.12);
+}
+
+@utility glass-strong {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
+    0 30px 60px -25px rgba(20, 20, 30, 0.15);
+}
+
+@utility soft-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-2xl);
+  box-shadow:
+    0 1px 2px rgba(20, 20, 30, 0.04),
+    0 12px 30px -12px rgba(20, 20, 30, 0.12);
+}
+
+@utility brand-gradient-text {
+  background: linear-gradient(90deg, var(--bloom), var(--sky));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: color-mix(in oklab, var(--bloom) 10%, white);
+  color: oklch(0.35 0.13 305);
+  border: 1px solid color-mix(in oklab, var(--bloom) 25%, transparent);
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes float-y-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float-y-slow 9s ease-in-out infinite;
+}
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+.hero_bgx {
+  position: absolute;
+  height: 700px;
+  background-size: cover;
+  background-position: center 100px;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: absolute;
+  z-index: -99;
+}
+.fade_bgx {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(15, 145, 180) 0%,
+    rgba(108, 194, 217, 1) 15%,
+    rgba(108, 194, 217, 0.5) 35%,
+    rgba(108, 194, 217, 0.3) 60%,
+    rgba(108, 194, 217, 0.1) 70%,
+    rgba(226, 236, 233, 0.5) 80%,
+    rgba(226, 236, 233, 0.8) 90%,
+    rgba(226, 236, 233, 1) 100%
+  );
+}
+
+/* ============ BUTTERY PHYSICS LAYER ============ */
+
+/* Smooth font rendering everywhere */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Default fluid easing for every element */
+*,
+*::before,
+*::after {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Universal interactive tactile behavior */
+button,
+[role="button"],
+a,
+summary,
+[data-slot="tabs-trigger"],
+[data-slot="select-trigger"],
+.soft-card,
+.glass-strong {
+  transition-property: transform, box-shadow, background-color, border-color, color, opacity, filter;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+button:active,
+[role="button"]:active,
+a:active,
+summary:active,
+[data-slot="tabs-trigger"]:active,
+[data-slot="select-trigger"]:active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gentle hover lift for buttons and link-style controls */
+button:not(:disabled):hover,
+[role="button"]:not(:disabled):hover {
+  transform: translateY(-1.5px);
+  filter: drop-shadow(0 8px 20px color-mix(in oklab, var(--bloom) 12%, transparent));
+}
+
+/* Softer ambient shadows on cards (without breaking custom styles) */
+.soft-card {
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--ink) 4%, transparent),
+    0 10px 30px -12px color-mix(in oklab, var(--bloom) 18%, transparent),
+    0 24px 60px -30px color-mix(in oklab, var(--sky) 22%, transparent);
+}
+.soft-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 4px color-mix(in oklab, var(--ink) 5%, transparent),
+    0 18px 40px -14px color-mix(in oklab, var(--bloom) 22%, transparent),
+    0 36px 80px -30px color-mix(in oklab, var(--sky) 26%, transparent);
+}
+
+/* Tab/content fade + slide-up */
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+[data-slot="tabs-content"],
+[role="tabpanel"] {
+  animation: fade-slide-up 300ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Toast spring slide-in from top */
+@keyframes toast-spring-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+[data-sonner-toast] {
+  animation: toast-spring-in 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Subview slide transitions for back navigation */
+@keyframes subview-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes subview-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-subview-in {
+  animation: subview-slide-in-right 250ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.animate-subview-back {
+  animation: subview-slide-in-left 250ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Skill minigame slide transitions */
+@keyframes skill-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes skill-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes skill-slide-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+}
+@keyframes skill-slide-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+}
