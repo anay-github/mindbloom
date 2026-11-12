@@ -1,70 +1,95 @@
+<div align="center">
+
+<img src="public/__l5e/assets-v1/232401a9-bb4e-4188-8a38-d4337fa30e25/mindbloom-mark.png" width="64" alt="MindBloom flower mark">
+
 # MindBloom
 
-A student-wellness prototype that combines daily check-ins, short skill-building activities, and explainable patterns to help trusted adults notice when a student may need support.
+**Spot the Signs. Build the Skills.**
 
-**2026 UA Little Rock AI Hackathon & HealthTech Startup Week: 4th place, $2,000 team prize.** The organizer's June 16, 2026 results email lists eight team members and a $250 award per member. These are competition awards, not app revenue.
+A student wellness prototype that connects daily check-ins, small wellness habits, and explainable patterns with supportive counselor workflows.
 
-[Live demo](https://mindbloom-ai-app.lovable.app/) · [Student dashboard](https://mindbloom-ai-app.lovable.app/student-dashboard) · [Team presentation](https://docs.google.com/presentation/d/1iDPEgJtQppI4zQXNg8ko-38plpY3MKdfvMvlYerw0jU/edit)
+**[Live demo](https://mindbloom-ai-app.lovable.app/)** · **[Student dashboard](https://mindbloom-ai-app.lovable.app/student-dashboard)** · **[Counselor dashboard](https://mindbloom-ai-app.lovable.app/counselor-dashboard)**
 
-## What the prototype does
+🏅 **4th place · 2026 UA Little Rock AI Hackathon & HealthTech Startup Week**
 
-- Student check-ins for mood, stress, energy, and sleep, plus journal reflections.
-- Guided breathing, grounding, mindfulness, and other short wellness activities.
-- A garden, streaks, and progress feedback to encourage consistent participation.
-- A counselor dashboard with student trends, support alerts, and explanations of the signals behind recommendations.
-- Demonstrations of calendar and wearable settings and contextual school information.
+[Development guide](docs/DEVELOPMENT.md) · [Project story & team](docs/PROJECT_NOTES.md) · [Team presentation](https://docs.google.com/presentation/d/1iDPEgJtQppI4zQXNg8ko-38plpY3MKdfvMvlYerw0jU/edit)
 
-## How we built it
+</div>
 
-MindBloom was developed as a team project during the June 8–12, 2026 hackathon at UA Little Rock. The team was Anay Pandit, Hannah Robertson, Jake Hu, Joel Johnson, Luke Wang, Rudra Pratap Mukherjee, Tanisha Virani, and Vishak Meenachi.
+![MindBloom landing page with its student check-in and counselor insight preview](docs/images/mindbloom-home.jpg)
 
-An earlier prototype used Vercel v0 and Next.js; that version remains in this repository's earlier commits. The current app was built and iterated in **Lovable** using **React 19, TypeScript, TanStack Start/Router, Vite, and Tailwind CSS 4**. Radix/shadcn components provide UI primitives, Recharts draws trends, Lottie animates the garden, and Lucide supplies icons. Supabase client and server integration scaffolding is included.
+## Small signals, thoughtful support
 
-Development involved describing the product and screens to Lovable, reviewing the generated interface, and iterating on behavior. The recorded project history includes refinements to the counted-exhale breathing animation, cycle progress, and example student names. Lovable generated and edited implementation code with those instructions. This is a team-built, AI-assisted prototype; the repository does not claim that Anay independently wrote every component.
+MindBloom explores a simple loop: **check in → practice a skill → notice patterns → offer support**. Students get an encouraging space to reflect and build habits. Counselors get a clearer view of changes over time, with explanations that keep people involved in deciding what support is appropriate.
 
-The wellness analysis in `src/lib/mindbloom-ai.ts` uses explicit rules and changes relative to a student's baseline. It produces understandable signal summaries from sample data. It is not a trained diagnostic model or a live LLM service.
+## Explore the prototype
+
+| Experience | What it includes |
+| --- | --- |
+| 🌤️ Daily check-ins | Mood, stress, energy, and sleep ratings, with optional journal reflections. |
+| 🌬️ Build Skills | Breathing, mindfulness, grounding, journaling, stress reset, and emotional regulation activities. |
+| 🌱 Resilience Garden | A garden, XP, streaks, daily quests, and progress feedback. |
+| 📈 Explainable insights | Explicit rules compare sample signals with a student's own baseline and describe the changes. |
+| 🤝 Counselor workspace | Trend charts, a priority queue, support alerts, and demonstration outreach tools. |
+| 📅 Context | Demonstrations of calendar, wearable, and school context alongside wellness patterns. |
+
+<details>
+<summary><strong>See the student and counselor workspaces</strong></summary>
+
+### Student skill path
+
+![Student dashboard showing a personalized breathing path, XP level, and daily quests](docs/images/mindbloom-student.jpg)
+
+### Counselor overview
+
+![Counselor dashboard showing sample student trends, signal summaries, and support tools](docs/images/mindbloom-counselor.jpg)
+
+All student names and wellness signals shown here are demonstration data.
+
+</details>
+
+## Try it in two minutes
+
+1. Open the [student dashboard](https://mindbloom-ai-app.lovable.app/student-dashboard). Explore the check-in form, or choose **Do later** to browse.
+2. Open **Build Skills**. Choose a theme, difficulty, and activity preference, then select **Build My Path**.
+3. Visit the [counselor dashboard](https://mindbloom-ai-app.lovable.app/counselor-dashboard). Acknowledge the sample alert to explore trends and student profiles.
+4. Try **What does this pattern mean?** to see the demonstration explanation workflow.
+
+Use sample data while exploring. The role-selection screen is a demo; dashboard links are directly accessible.
 
 ## Run locally
 
-Use Bun with the committed lockfile:
+Install Bun, then clone the repository and use the committed lockfile:
 
 ```sh
+git clone https://github.com/anaypandit/mindbloom.git
+cd mindbloom
 bun install --frozen-lockfile
 cp .env.example .env
-# Fill in your own Supabase project URL and publishable key.
+```
+
+Fill in your own Supabase project configuration in `.env`, then start the app:
+
+```sh
 bun run dev
 ```
 
-Open the local address printed by Vite. To build:
+Open the local URL printed by Vite. See the [development guide](docs/DEVELOPMENT.md) for environment variables, build commands, the source map, and hosting notes.
 
-```sh
-bun run build
-```
+## Built with
 
-The export includes Supabase initialization, so use your own project's configuration. Never put a Supabase service-role key in a `VITE_` variable. `.env` files are excluded from Git.
+**React 19 · TypeScript · TanStack Start/Router · Vite · Tailwind CSS 4**
 
-## Source map
+Radix/shadcn components provide UI primitives; Recharts draws trends; Lottie animates the garden; Lucide supplies icons. Supabase integration scaffolding is included. The team built and iterated on the current app in **Lovable**.
 
-| Location | Purpose |
-|---|---|
-| `src/routes/index.tsx` | Product landing page |
-| `src/routes/student-dashboard.tsx` | Check-ins, journal, skills, garden, and settings |
-| `src/routes/counselor-dashboard.tsx` | Student trends and supportive outreach workflows |
-| `src/routes/signin.tsx` | Demonstration role-selection/sign-in screen |
-| `src/lib/mindbloom-ai.ts` | Explainable pattern rules and sample signals |
-| `src/lib/build-skills/` | Activity definitions and local progress/preferences |
-| `src/lib/support-alerts.ts` | Local demonstration alert store |
-| `src/integrations/supabase/` | Supabase integration scaffolding |
-| `public/__l5e/assets-v1/` | Images copied from the published app for portability |
+## Prototype scope
 
-## Prototype boundaries
+The dashboards use sample data, component state, and browser-local storage. The analysis in [src/lib/mindbloom-ai.ts](src/lib/mindbloom-ai.ts) uses explicit rules; it is not a trained diagnostic model or a live LLM service. Calendar, wearable, sign-in, and outreach flows include demonstration behavior. Interface labels about privacy or encryption do not establish production authentication, access controls, or end-to-end encryption.
 
-The dashboards use mock student data and browser-local state. Calendar and wearable connections are demonstrations. The sign-in screen navigates to the chosen role; it does not authenticate those form credentials. Labels about encryption and privacy in the interface are product mockups, not proof of implemented end-to-end encryption or production access controls. Use sample data when exploring this version.
+MindBloom supports exploration of student wellness workflows. It does not diagnose conditions, and clinical effectiveness has not been established. [Project notes](docs/PROJECT_NOTES.md) explain the current boundaries in more detail.
 
-MindBloom does not diagnose mental-health conditions. Recommendations illustrate supportive workflows for human review; the prototype has not established clinical effectiveness.
+## Team and recognition
 
-## Version and recognition
+Built by **Anay Pandit, Hannah Robertson, Jake Hu, Joel Johnson, Luke Wang, Rudra Pratap Mukherjee, Tanisha Virani, and Vishak Meenachi** during the June 8–12, 2026 hackathon at UA Little Rock.
 
-The current source was exported from [the Lovable project](https://lovable.dev/projects/44378545-4b55-4241-a139-05cc15806aef) on November 10, 2026, at the displayed revision `6f718860`. This replaces the older v0 implementation on the default branch while preserving its Git history. Documentation, an environment template, and copies of the images used by the app were added for the GitHub handoff. This is a snapshot; automatic Lovable-to-GitHub sync has not been connected.
-
-[UA Little Rock's project coverage](https://ualr.edu/news/2026/06/16/arkansas-students-reimagine-healthcare-at-ua-little-rock-ai-hackathon/) identifies Mind Bloom and its team. The fourth-place award and amount are documented in the organizer's June 16 results email, “Important Wrap Ups - AI Hackathon Survey, Photos, Scores, Prizes & Free Learning Opps.”
+The team earned **4th place and a $2,000 team prize**. [UA Little Rock's coverage](https://ualr.edu/news/2026/06/16/arkansas-students-reimagine-healthcare-at-ua-little-rock-ai-hackathon/) features Mind Bloom and its team. See [project notes](docs/PROJECT_NOTES.md) for award provenance, AI-assisted development, and the source export history.
