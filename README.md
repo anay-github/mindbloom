@@ -6,90 +6,43 @@
 
 **Spot the Signs. Build the Skills.**
 
-A student wellness prototype that connects daily check-ins, small wellness habits, and explainable patterns with supportive counselor workflows.
+A student wellness prototype connecting daily check-ins, healthy habits, and thoughtful support.
 
-**[Live demo](https://mindbloom-ai-app.lovable.app/)** · **[Student dashboard](https://mindbloom-ai-app.lovable.app/student-dashboard)** · **[Counselor dashboard](https://mindbloom-ai-app.lovable.app/counselor-dashboard)**
+**[Explore MindBloom](https://mindbloom-ai-app.lovable.app/)** · **[Student dashboard](https://mindbloom-ai-app.lovable.app/student-dashboard)** · **[Counselor dashboard](https://mindbloom-ai-app.lovable.app/counselor-dashboard)**
 
-🏅 **4th place · 2026 UA Little Rock AI Hackathon & HealthTech Startup Week**
-
-[Development guide](docs/DEVELOPMENT.md) · [Project story & team](docs/PROJECT_NOTES.md) · [Team presentation](https://docs.google.com/presentation/d/1iDPEgJtQppI4zQXNg8ko-38plpY3MKdfvMvlYerw0jU/edit)
+🏅 **4th place · 2026 UA Little Rock AI Hackathon & HealthTech Startup Week · $2,000 team prize**
 
 </div>
 
-![MindBloom landing page with its student check-in and counselor insight preview](docs/images/mindbloom-home.jpg)
+![MindBloom student check-in and counselor insight preview](docs/images/mindbloom-home.jpg)
 
-## Small signals, thoughtful support
+## The idea
 
-MindBloom explores a simple loop: **check in → practice a skill → notice patterns → offer support**. Students get an encouraging space to reflect and build habits. Counselors get a clearer view of changes over time, with explanations that keep people involved in deciding what support is appropriate.
+Small changes can be easier to understand when seen over time. MindBloom gives students an encouraging place to reflect and practice wellness skills, while helping counselors explore patterns and plan supportive conversations.
 
-## Explore the prototype
+## What you can explore
 
-| Experience | What it includes |
-| --- | --- |
-| 🌤️ Daily check-ins | Mood, stress, energy, and sleep ratings, with optional journal reflections. |
-| 🌬️ Build Skills | Breathing, mindfulness, grounding, journaling, stress reset, and emotional regulation activities. |
-| 🌱 Resilience Garden | A garden, XP, streaks, daily quests, and progress feedback. |
-| 📈 Explainable insights | Explicit rules compare sample signals with a student's own baseline and describe the changes. |
-| 🤝 Counselor workspace | Trend charts, a priority queue, support alerts, and demonstration outreach tools. |
-| 📅 Context | Demonstrations of calendar, wearable, and school context alongside wellness patterns. |
+- **Daily check-ins** for mood, stress, energy, and sleep, alongside journal reflections.
+- **Guided skills** including breathing, mindfulness, grounding, and stress reset activities.
+- **A resilience garden** with streaks, XP, and daily quests.
+- **Counselor views** with student trends, explanations, and support alerts.
+- **Personalized pathways** shaped by activity preferences.
 
 <details>
-<summary><strong>See the student and counselor workspaces</strong></summary>
+<summary>See the dashboards</summary>
 
-### Student skill path
+![Student skill path and daily progress](docs/images/mindbloom-student.jpg)
 
-![Student dashboard showing a personalized breathing path, XP level, and daily quests](docs/images/mindbloom-student.jpg)
-
-### Counselor overview
-
-![Counselor dashboard showing sample student trends, signal summaries, and support tools](docs/images/mindbloom-counselor.jpg)
-
-All student names and wellness signals shown here are demonstration data.
+![Counselor dashboard with sample student trends and support tools](docs/images/mindbloom-counselor.jpg)
 
 </details>
 
-## Try it in two minutes
-
-1. Open the [student dashboard](https://mindbloom-ai-app.lovable.app/student-dashboard). Explore the check-in form, or choose **Do later** to browse.
-2. Open **Build Skills**. Choose a theme, difficulty, and activity preference, then select **Build My Path**.
-3. Visit the [counselor dashboard](https://mindbloom-ai-app.lovable.app/counselor-dashboard). Acknowledge the sample alert to explore trends and student profiles.
-4. Try **What does this pattern mean?** to see the demonstration explanation workflow.
-
-Use sample data while exploring. The role-selection screen is a demo; dashboard links are directly accessible.
-
-## Run locally
-
-Install Bun, then clone the repository and use the committed lockfile:
-
-```sh
-git clone https://github.com/anaypandit/mindbloom.git
-cd mindbloom
-bun install --frozen-lockfile
-cp .env.example .env
-```
-
-Fill in your own Supabase project configuration in `.env`, then start the app:
-
-```sh
-bun run dev
-```
-
-Open the local URL printed by Vite. See the [development guide](docs/DEVELOPMENT.md) for environment variables, build commands, the source map, and hosting notes.
-
-## Built with
-
-**React 19 · TypeScript · TanStack Start/Router · Vite · Tailwind CSS 4**
-
-Radix/shadcn components provide UI primitives; Recharts draws trends; Lottie animates the garden; Lucide supplies icons. Supabase integration scaffolding is included. The team built and iterated on the current app in **Lovable**.
-
-## Prototype scope
-
-The dashboards use sample data, component state, and browser-local storage. The analysis in [src/lib/mindbloom-ai.ts](src/lib/mindbloom-ai.ts) uses explicit rules; it is not a trained diagnostic model or a live LLM service. Calendar, wearable, sign-in, and outreach flows include demonstration behavior. Interface labels about privacy or encryption do not establish production authentication, access controls, or end-to-end encryption.
-
-MindBloom supports exploration of student wellness workflows. It does not diagnose conditions, and clinical effectiveness has not been established. [Project notes](docs/PROJECT_NOTES.md) explain the current boundaries in more detail.
-
 ## Team and recognition
 
-Built by **Anay Pandit, Hannah Robertson, Jake Hu, Joel Johnson, Luke Wang, Rudra Pratap Mukherjee, Tanisha Virani, and Vishak Meenachi** during the June 8–12, 2026 hackathon at UA Little Rock.
+Created by **Anay Pandit, Hannah Robertson, Jake Hu, Joel Johnson, Luke Wang, Rudra Pratap Mukherjee, Tanisha Virani, and Vishak Meenachi** during UA Little Rock's June 2026 hackathon.
 
-The team earned **4th place and a $2,000 team prize**. [UA Little Rock's coverage](https://ualr.edu/news/2026/06/16/arkansas-students-reimagine-healthcare-at-ua-little-rock-ai-hackathon/) features Mind Bloom and its team. See [project notes](docs/PROJECT_NOTES.md) for award provenance, AI-assisted development, and the source export history.
+MindBloom earned **4th place and a $2,000 team prize**. Read [UA Little Rock's project coverage](https://ualr.edu/news/2026/06/16/arkansas-students-reimagine-healthcare-at-ua-little-rock-ai-hackathon/) or explore the [team presentation](https://docs.google.com/presentation/d/1iDPEgJtQppI4zQXNg8ko-38plpY3MKdfvMvlYerw0jU/edit).
+
+Built collaboratively in **Lovable** with **React, TypeScript, and Tailwind CSS**.
+
+*This is an interactive prototype with sample data and local browser state. Sign-in and external connections are demonstrations; insights use explicit rules. MindBloom supports wellness exploration and does not provide diagnoses.*
